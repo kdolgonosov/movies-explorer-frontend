@@ -35,9 +35,6 @@
 .portfolio__projects-item {
     border-bottom: 1px solid #424242;
     margin-bottom: 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 @media (max-width: 575px) {
     .portfolio__projects-item {
@@ -52,6 +49,10 @@
 }
 .portfolio__projects-item-link {
     text-decoration: none;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     color: #fff;
     font-size: 30px;
     font-weight: 400;

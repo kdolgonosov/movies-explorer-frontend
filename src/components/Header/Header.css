@@ -186,11 +186,13 @@
 }
 .header__mobile-nav-closeBtn {
     margin: 23px 23px 104px 0;
+    flex: 0 0 auto;
+    padding: 0;
     align-self: flex-end;
     background-color: transparent;
     border: 0;
     background-image: url(./../../images/close-button.svg);
-    background-size: contain;
+    background-size: cover;
     width: 22px;
     height: 22px;
     transition: 0.4s;
@@ -223,7 +225,7 @@
 }
 
 .header__mobile-nav-profile-link {
-    margin-top: 617px;
+    margin-top: calc(100vh - 407px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -242,7 +244,7 @@
 }
 @media (max-width: 575px) {
     .header__mobile-nav-profile-link {
-        margin-top: 444px;
+        margin-top: calc(100vh - 336px);
     }
 }
 .header__mobile-nav-profile-link:hover {

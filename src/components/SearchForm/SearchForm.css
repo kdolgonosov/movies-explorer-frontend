@@ -59,6 +59,9 @@
     background-color: transparent;
     outline: none;
 }
+.searchForm__input:focus {
+    border: 2px solid rgba(170, 170, 170, 0.6);
+}
 @media (max-width: 525px) {
     .searchForm__input {
         height: 56px;

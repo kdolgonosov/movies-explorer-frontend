@@ -12,9 +12,12 @@ const Portfolio = () => {
                         href='https://github.com/kdolgonosov/how-to-learn'
                         className='portfolio__projects-item-link'
                     >
-                        Статичный сайт
+                        <span className='portfolio__projects-item-span'>Статичный сайт</span>
+
+                        <button className='portfolio__projects-item-button' type='button'>
+                            ↗
+                        </button>
                     </a>
-                    <button className='portfolio__projects-item-button'>↗</button>
                 </li>
                 <li className='portfolio__projects-item'>
                     <a
@@ -23,9 +26,11 @@ const Portfolio = () => {
                         href='https://kdolgonosov.github.io/russian-travel/index.html'
                         className='portfolio__projects-item-link'
                     >
-                        Адаптивный сайт
+                        <span className='portfolio__projects-item-span'>Адаптивный сайт</span>
+                        <button className='portfolio__projects-item-button' type='button'>
+                            ↗
+                        </button>
                     </a>
-                    <button className='portfolio__projects-item-button'>↗</button>
                 </li>
                 <li className='portfolio__projects-item'>
                     <a
@@ -34,9 +39,14 @@ const Portfolio = () => {
                         href='https://kdolgonosov.github.io/mesto/'
                         className='portfolio__projects-item-link'
                     >
-                        Одностраничное приложение
+                        <span className='portfolio__projects-item-span'>
+                            Одностраничное приложение
+                        </span>
+
+                        <button className='portfolio__projects-item-button' type='button'>
+                            ↗
+                        </button>
                     </a>
-                    <button className='portfolio__projects-item-button'>↗</button>
                 </li>
             </ul>
         </section>

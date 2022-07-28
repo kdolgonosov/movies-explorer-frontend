@@ -9,6 +9,7 @@ import { Switch, Route } from 'react-router-dom';
 import NotFound from '../NotFound/NotFound';
 
 const App = () => {
+    document.documentElement.lang = 'ru';
     return (
         <div className='page'>
             <Switch>
