@@ -1,0 +1,114 @@
+.footer {
+    padding: 199px 70px 20px;
+    background-color: #202020;
+    color: #fff;
+}
+@media (max-width: 767px) {
+    .footer {
+        padding: 149px 30px 20px;
+    }
+}
+@media (max-width: 575px) {
+    .footer {
+        padding: 129px 10px 10px;
+    }
+}
+
+.footer__title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #8b8b8b;
+}
+@media (max-width: 575px) {
+    .footer__title {
+        font-size: 12px;
+        line-height: 14.52px;
+    }
+}
+.footer__title::after {
+    content: '';
+    position: relative;
+    top: 20px;
+    width: 100%;
+    height: 1px;
+    background-color: #424242;
+}
+.footer-wrapper {
+    margin-top: 41px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+@media (max-width: 575px) {
+    .footer-wrapper {
+        margin-top: 52px;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
+.footer__year {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+}
+@media (max-width: 575px) {
+    .footer__year {
+        font-size: 12px;
+        line-height: 14.52px;
+        color: #8b8b8b;
+    }
+}
+
+.footer__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width: 575px) {
+    .footer__links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.footer__links-item {
+    margin-right: 20px;
+}
+@media (max-width: 575px) {
+    .footer__links-item {
+        margin: 0 0 12px 0;
+    }
+    .footer__links-item:last-of-type {
+        margin-bottom: 30px;
+    }
+}
+.footer__links-item:last-of-type {
+    margin-right: 0;
+}
+
+.footer__link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    transition: 0.4s;
+}
+@media (max-width: 575px) {
+    .footer__link {
+        font-size: 12px;
+        line-height: 14.52px;
+    }
+}
+.footer__link:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

@@ -1,0 +1,87 @@
+.moviesCard {
+    color: #fff;
+    background-color: #222222;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+}
+@media (max-width: 767px) {
+    .moviesCard {
+        width: 309px;
+    }
+}
+@media (max-width: 525px) {
+    .moviesCard {
+        width: 300px;
+    }
+}
+.moviesCard-wrapper {
+    padding: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.moviesCard__title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0px;
+}
+@media (max-width: 525px) {
+    .moviesCard__title {
+        font-size: 12px;
+    }
+}
+.moviesCard__duration {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+}
+@media (max-width: 525px) {
+    .moviesCard__duration {
+        font-size: 10px;
+    }
+}
+.moviesCard__image {
+    width: 360px;
+    height: 200px;
+}
+@media (max-width: 767px) {
+    .moviesCard__image {
+        width: 309px;
+        height: 190px;
+    }
+}
+@media (max-width: 525px) {
+    .moviesCard__image {
+        width: 300px;
+        height: 168px;
+    }
+}
+.moviesCard__button {
+    margin: 18px 0;
+    align-self: center;
+    background-color: #313131;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 11px;
+    border: 0;
+    width: 100px;
+    height: 29px;
+    border-radius: 30px;
+    transition: 0.4s;
+}
+.moviesCard__button_type_added {
+    background-color: #ee3465;
+}
+.moviesCard__button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
