@@ -7,13 +7,16 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
+import { useRef } from 'react';
 const Main = () => {
+    const myRef = useRef(null);
+    const scroll = () => myRef.current.scrollIntoView();
     return (
         <>
             <Header />
             <main>
-                <Promo />
-                <AboutProject />
+                <Promo scroll={scroll} />
+                <AboutProject myRef={myRef} />
                 <Techs />
                 <AboutMe />
                 <Portfolio />

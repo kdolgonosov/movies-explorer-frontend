@@ -74,9 +74,21 @@
     justify-self: start;
 }
 .profile__info-item_type_data {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    padding: 0;
     justify-self: end;
 }
+.profile__info-item_type_data:focus {
+    padding-left: 15px;
+    outline: none;
+    background-color: rgba(58, 58, 58, 0.4);
+}
 .profile__edit-btn {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
     margin-bottom: 16px;
     text-decoration: none;
     color: #fff;
@@ -114,4 +126,14 @@
 .profile__signout-btn:hover {
     cursor: pointer;
     opacity: 0.6;
+}
+
+.profile__info-errorSpan {
+    font-size: 10px;
+    color: #ff5c5ccf;
+    position: absolute;
+    top: 316px;
+}
+.profile__info-errorSpan:nth-of-type(2n) {
+    top: 360px;
 }
