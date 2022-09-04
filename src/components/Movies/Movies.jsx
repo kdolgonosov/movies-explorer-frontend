@@ -6,7 +6,6 @@ import Footer from '../Footer/Footer';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import moviesApi from '../../utils/MoviesApi';
 import Preloader from '../Preloader/Preloader';
-import SavedMovies from '../SavedMovies/SavedMovies';
 
 const Movies = () => {
     const [cachedMovies, setCachedMovies] = useState([]);

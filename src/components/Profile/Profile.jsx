@@ -15,7 +15,6 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
 
     const [isNameValid, setIsNameValid] = useState(false);
     const [errorName, setErrorName] = useState('');
-    const [isEmailValid, setIsEmailValid] = useState(false);
     const [errorEmail, setErrorEmail] = useState('');
     useEffect(() => {
         inputs.forEach((input) => {
@@ -42,10 +41,8 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
         if (!emailRegex.test(e.target.value)) {
-            setIsEmailValid(false);
             setErrorEmail('Введите корректный email');
         } else {
-            setIsEmailValid(true);
             setErrorEmail('');
         }
     };

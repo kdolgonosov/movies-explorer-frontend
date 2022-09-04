@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './SavedMovies.css';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
@@ -12,14 +13,11 @@ const SavedMovies = () => {
     const [isShownPreloader, setIsShownPreloader] = useState(false);
     const [isShownNothingFoundSpan, setIsShownNothingFoundSpan] = useState(false);
     useEffect(() => {
-        // const localSavedMovies = JSON.parse(localStorage.getItem('savedMovies'));
-        // if (localSavedMovies === null || localSavedMovies.length === 0) {
         mainApi.getSavedMovies().then(({ movies }) => {
             setSavedMovies(movies);
             localStorage.setItem('savedMovies', JSON.stringify(movies));
             setFilteredSavedMovies(movies);
         });
-        // }
     }, []);
     const filterFilms = (inputValue, isShortFilms) => {
         return savedMovies.filter((movie) => {
@@ -38,12 +36,6 @@ const SavedMovies = () => {
         setIsShownNothingFoundSpan(false);
         setIsShownPreloader(true);
         setFilteredSavedMovies(filterFilms(inputValue, isShortFilms));
-        // localStorage.setItem(
-        //     'filteredMovies',
-        //     JSON.stringify(filterFilms(inputValue, isShortFilms)),
-        // );
-        // localStorage.setItem('checkboxValue', isShortFilms);
-        // localStorage.setItem('searchInputValue', inputValue);
         setTimeout(() => {
             if (filterFilms(inputValue, isShortFilms).length === 0) {
                 setIsShownNothingFoundSpan(true);
@@ -62,11 +54,16 @@ const SavedMovies = () => {
         <>
             <Header />
             <SearchForm onSubmit={handleSearch} />
-            <MoviesCardList
-                isSavedMovies={true}
-                movies={filteredSavedMovies}
-                onDeleteMovie={onDeleteMovie}
-            />
+            {isShownNothingFoundSpan && <span className='nothingFound'>Ничего не найдено</span>}
+            {isShownPreloader ? (
+                <Preloader />
+            ) : (
+                <MoviesCardList
+                    isSavedMovies={true}
+                    movies={filteredSavedMovies}
+                    onDeleteMovie={onDeleteMovie}
+                />
+            )}
             <Footer />
         </>
     );

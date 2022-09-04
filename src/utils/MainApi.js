@@ -109,7 +109,7 @@ class MainApi {
 
 const mainApi = new MainApi({
     // url моего бэка
-    baseUrl: 'http://localhost:3001',
+    baseUrl: 'http://api.movies-explorer.kd.nomoredomains.xyz',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

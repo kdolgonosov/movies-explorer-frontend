@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import mainApi from '../../utils/MainApi';
 import './Login.css';
 import FormWithTitle from '../FormWithTitle/FormWithTitle';
 
@@ -10,17 +8,13 @@ const Login = ({ loginError, onLogin }) => {
     const [password, setPassword] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
-    const [isEmailValid, setIsEmailValid] = useState(false);
     const [isPasswordValid, setIsPasswordValid] = useState(false);
-    const history = useHistory();
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
         if (!emailRegex.test(e.target.value)) {
-            setIsEmailValid(false);
             setErrorEmail('Введите корректный email');
         } else {
-            setIsEmailValid(true);
             setErrorEmail('');
         }
     };
