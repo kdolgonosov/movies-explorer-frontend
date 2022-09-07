@@ -13,6 +13,14 @@ const SearchForm = ({ onSubmit }) => {
             checkIsShort();
         }
     }, []);
+    useEffect(() => {
+        if (
+            localStorage.getItem('filteredMovies') &&
+            JSON.parse(localStorage.getItem('filteredMovies')).length !== 0
+        ) {
+            onSubmit(inputValue, isShortFilms);
+        }
+    }, [isShortFilms]);
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
     };
@@ -26,8 +34,6 @@ const SearchForm = ({ onSubmit }) => {
     const checkIsShort = () => {
         const input = document.getElementById('testId');
         const test = JSON.parse(localStorage.getItem('checkboxValue'));
-        // input.checked = false;
-        // input.setAttribute('checked', '');
         if (test) {
             input.checked = true;
         } else {

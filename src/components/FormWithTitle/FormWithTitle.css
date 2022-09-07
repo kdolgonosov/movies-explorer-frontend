@@ -53,6 +53,12 @@
     background-color: #4285f4;
     transition: 0.4s;
 }
+.formWithTitle__submit-btn:disabled {
+    opacity: 0.6;
+}
+.formWithTitle__submit-btn:disabled:hover {
+    cursor: default;
+}
 @media (max-width: 767px) {
     .formWithTitle__submit-btn {
         margin: 179px 0 16px 0;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ loggedIn }) => {
     let location = useLocation();
     const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
     return (
@@ -14,7 +14,7 @@ const Header = () => {
             >
                 <nav className='header-wrapper'>
                     <NavLink exact to='/' className='header__logo'></NavLink>
-                    {location.pathname !== '/' && (
+                    {(location.pathname !== '/' || loggedIn) && (
                         <>
                             <NavLink
                                 to='/movies'
@@ -33,7 +33,7 @@ const Header = () => {
                         </>
                     )}
                 </nav>
-                {location.pathname === '/' ? (
+                {location.pathname === '/' && !loggedIn ? (
                     <div className='header__sign-wrapper'>
                         <NavLink to='/signup' className='header__signup-link'>
                             Регистрация

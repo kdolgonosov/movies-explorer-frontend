@@ -61,6 +61,7 @@ const Register = ({ onLogin }) => {
             btnTitle='Зарегистрироваться'
             onSubmit={handleRegister}
             registerError={registerError}
+            isFormValid={isNameValid && isPasswordValid && isEmailValid}
         >
             <label className='register__input-label'>Имя</label>
             <input

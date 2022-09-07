@@ -45,6 +45,7 @@ const SavedMovies = () => {
     };
     const onDeleteMovie = (id) => {
         setSavedMovies(savedMovies.filter((movie) => id !== movie._id));
+        setFilteredSavedMovies(filteredSavedMovies.filter((movie) => id !== movie._id));
         localStorage.setItem(
             'savedMovies',
             JSON.stringify(savedMovies.filter((movie) => id !== movie._id)),

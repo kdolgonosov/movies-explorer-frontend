@@ -8,12 +8,12 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import { useRef } from 'react';
-const Main = () => {
+const Main = ({ loggedIn }) => {
     const myRef = useRef(null);
     const scroll = () => myRef.current.scrollIntoView();
     return (
         <>
-            <Header />
+            <Header loggedIn={loggedIn} />
             <main>
                 <Promo scroll={scroll} />
                 <AboutProject myRef={myRef} />

@@ -7,6 +7,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import ProtectedRoute from '../../utils/ProtectedRoute';
+import ReversedProtectedRoute from '../../utils/ReversedProtectedRoute';
 import mainApi from '../../utils/MainApi';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import NotFound from '../NotFound/NotFound';
@@ -32,6 +33,7 @@ const App = () => {
             .catch((err) => setLoginError(true));
     };
     const handleSignOut = () => {
+        setLoginError(false);
         setLoggedIn(false);
         localStorage.removeItem('jwt');
         localStorage.removeItem('filteredMovies');
@@ -62,7 +64,7 @@ const App = () => {
             <div className='page'>
                 <Switch>
                     <Route exact path='/'>
-                        <Main />
+                        <Main loggedIn={loggedIn} />
                     </Route>
                     <ProtectedRoute path='/movies' loggedIn={loggedIn}>
                         <Movies />
@@ -73,13 +75,13 @@ const App = () => {
                     <ProtectedRoute path='/profile' loggedIn={loggedIn}>
                         <Profile onUpdateUser={handleUpdateUser} onSignOut={handleSignOut} />
                     </ProtectedRoute>
-                    <Route path='/signup'>
+                    <ReversedProtectedRoute path='/signup' loggedIn={loggedIn}>
                         <Register onLogin={handleLogin} />
-                    </Route>
-                    <Route path='/signin'>
+                    </ReversedProtectedRoute>
+                    <ReversedProtectedRoute path='/signin' loggedIn={loggedIn}>
                         <Login loginError={loginError} onLogin={handleLogin} />
-                    </Route>
-                    <Route path='/notfound'>
+                    </ReversedProtectedRoute>
+                    <Route exact path='*'>
                         <NotFound />
                     </Route>
                 </Switch>

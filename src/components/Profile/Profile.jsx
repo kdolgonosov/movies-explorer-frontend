@@ -13,9 +13,11 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
     const [email, setEmail] = useState(currentUser.email);
     const [isEditable, setIsEditable] = useState(false);
 
-    const [isNameValid, setIsNameValid] = useState(false);
+    const [isNameValid, setIsNameValid] = useState(true);
+    const [isEmailValid, setIsEmailValid] = useState(true);
     const [errorName, setErrorName] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
+    const [showSuccessSpan, setShowSuccessSpan] = useState(false);
     useEffect(() => {
         inputs.forEach((input) => {
             input.disabled = !input.disabled;
@@ -40,6 +42,7 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
     };
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
+        setIsEmailValid(e.target.validity.valid);
         if (!emailRegex.test(e.target.value)) {
             setErrorEmail('Введите корректный email');
         } else {
@@ -48,8 +51,10 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
     };
     const handleEditable = () => {
         setIsEditable(!isEditable);
+        setShowSuccessSpan(false);
         if (isEditable) {
             onUpdateUser(name, email);
+            setShowSuccessSpan(true);
         }
     };
     return (
@@ -85,8 +90,18 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
                     />
                     <span className='profile__info-errorSpan'>{errorEmail}</span>
                 </div>
+                {showSuccessSpan && (
+                    <span className='profile__successSpan'>Изменения успешно сохранены!</span>
+                )}
                 {isEditable ? (
-                    <button className='profile__edit-btn' onClick={handleEditable}>
+                    <button
+                        className='profile__edit-btn'
+                        onClick={handleEditable}
+                        disabled={
+                            !(isNameValid && isEmailValid) ||
+                            (name === currentUser.name && email === currentUser.email)
+                        }
+                    >
                         Сохранить
                     </button>
                 ) : (

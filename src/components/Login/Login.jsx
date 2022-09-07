@@ -8,10 +8,13 @@ const Login = ({ loginError, onLogin }) => {
     const [password, setPassword] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
+    const [isEmailValid, setIsEmailValid] = useState(false);
     const [isPasswordValid, setIsPasswordValid] = useState(false);
 
+    //добавить emailValid
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
+        setIsEmailValid(e.target.validity.valid);
         if (!emailRegex.test(e.target.value)) {
             setErrorEmail('Введите корректный email');
         } else {
@@ -37,6 +40,7 @@ const Login = ({ loginError, onLogin }) => {
             btnTitle='Войти'
             onSubmit={handleLogin}
             loginError={loginError}
+            isFormValid={isPasswordValid && isEmailValid}
         >
             <label className='login__input-label'>E-mail</label>
             <input

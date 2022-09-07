@@ -19,7 +19,6 @@ const MoviesCard = ({
     isLikedMovie,
 }) => {
     const [isLiked, setIsLiked] = useState(isLikedMovie);
-    //вынести выше
     const onAddMovie = () => {
         mainApi
             .addMovie({
@@ -37,9 +36,7 @@ const MoviesCard = ({
             })
             .then((movie) => {
                 const currentSavedMovies = JSON.parse(localStorage.getItem('savedMovies'));
-                console.log(currentSavedMovies);
                 currentSavedMovies.push(movie);
-                console.log(currentSavedMovies);
                 localStorage.setItem('savedMovies', JSON.stringify(currentSavedMovies));
                 setIsLiked(true);
             });
@@ -71,13 +68,13 @@ const MoviesCard = ({
             </a>
             <button
                 className={
-                    isLiked
+                    isLikedMovie || isLiked
                         ? 'moviesCard__button moviesCard__button_type_added'
                         : 'moviesCard__button'
                 }
                 onClick={isSavedMovies ? handleDeleteMovie : onAddMovie}
             >
-                {isLiked ? '✓' : isSavedMovies ? 'X' : 'Сохранить'}
+                {isLikedMovie || isLiked ? '✓' : isSavedMovies ? 'X' : 'Сохранить'}
             </button>
         </div>
     );
