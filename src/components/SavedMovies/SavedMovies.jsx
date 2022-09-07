@@ -55,7 +55,6 @@ const SavedMovies = () => {
         <>
             <Header />
             <SearchForm onSubmit={handleSearch} />
-            {isShownNothingFoundSpan && <span className='nothingFound'>Ничего не найдено</span>}
             {isShownPreloader ? (
                 <Preloader />
             ) : (
