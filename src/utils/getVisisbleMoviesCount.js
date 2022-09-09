@@ -9,10 +9,10 @@ export const getShownMovieCount = (width) => {
 };
 
 export const getLoadStep = (width) => {
-    if (width > 1280) {
+    if (width > 1663) {
         return 4;
     }
-    if (width > 768) {
+    if (width > 1280) {
         return 3;
     }
     return 2;

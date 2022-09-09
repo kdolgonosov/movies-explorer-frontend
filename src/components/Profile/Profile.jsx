@@ -2,10 +2,11 @@ import { useContext } from 'react';
 import './Profile.css';
 import Header from '../Header/Header';
 import { CurrentUserContext } from '../../utils/CurrentUserContext';
+import mainApi from '../../utils/MainApi';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const Profile = ({ onUpdateUser, onSignOut }) => {
+const Profile = ({ onSignOut }) => {
     const inputs = document.querySelectorAll('.profile__info-item_type_data');
     const emailRegex = /[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}/;
     const currentUser = useContext(CurrentUserContext);
@@ -18,6 +19,7 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
     const [errorName, setErrorName] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [showSuccessSpan, setShowSuccessSpan] = useState(false);
+    const [showFailSpan, setShowFailSpan] = useState(false);
     useEffect(() => {
         inputs.forEach((input) => {
             input.disabled = !input.disabled;
@@ -42,7 +44,7 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
     };
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
-        setIsEmailValid(e.target.validity.valid);
+        setIsEmailValid(emailRegex.test(e.target.value));
         if (!emailRegex.test(e.target.value)) {
             setErrorEmail('Введите корректный email');
         } else {
@@ -52,9 +54,19 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
     const handleEditable = () => {
         setIsEditable(!isEditable);
         setShowSuccessSpan(false);
+        setShowFailSpan(false);
         if (isEditable) {
-            onUpdateUser(name, email);
-            setShowSuccessSpan(true);
+            mainApi.editProfile(name, email).then((user) => {
+                if (!user) {
+                    setShowFailSpan(true);
+                    setName(currentUser.name);
+                    setEmail(currentUser.email);
+                    return;
+                }
+                setShowSuccessSpan(true);
+                currentUser.name = name;
+                currentUser.email = email;
+            });
         }
     };
     return (
@@ -93,6 +105,7 @@ const Profile = ({ onUpdateUser, onSignOut }) => {
                 {showSuccessSpan && (
                     <span className='profile__successSpan'>Изменения успешно сохранены!</span>
                 )}
+                {showFailSpan && <span className='profile__failSpan'>Произошла ошибка!</span>}
                 {isEditable ? (
                     <button
                         className='profile__edit-btn'

@@ -18,6 +18,7 @@ const App = () => {
     const [currentUser, setCurrentUser] = useState({});
     const [loggedIn, setLoggedIn] = useState(true);
     const [loginError, setLoginError] = useState(false);
+    const [editError, setEditError] = useState(false);
     const history = useHistory();
     const handleLogin = (e, email, password) => {
         e.preventDefault();
@@ -38,14 +39,6 @@ const App = () => {
         localStorage.removeItem('jwt');
         localStorage.removeItem('filteredMovies');
         history.push('/');
-    };
-    const handleUpdateUser = (name, email) => {
-        mainApi.editProfile(name, email).then((user) =>
-            setCurrentUser({
-                name: user.name,
-                email: user.email,
-            }),
-        );
     };
     useEffect(() => {
         mainApi
@@ -73,7 +66,7 @@ const App = () => {
                         <SavedMovies />
                     </ProtectedRoute>
                     <ProtectedRoute path='/profile' loggedIn={loggedIn}>
-                        <Profile onUpdateUser={handleUpdateUser} onSignOut={handleSignOut} />
+                        <Profile onSignOut={handleSignOut} editError={editError} />
                     </ProtectedRoute>
                     <ReversedProtectedRoute path='/signup' loggedIn={loggedIn}>
                         <Register onLogin={handleLogin} />
