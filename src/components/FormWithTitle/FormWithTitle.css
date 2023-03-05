@@ -53,6 +53,12 @@
     background-color: #4285f4;
     transition: 0.4s;
 }
+.formWithTitle__submit-btn:disabled {
+    opacity: 0.6;
+}
+.formWithTitle__submit-btn:disabled:hover {
+    cursor: default;
+}
 @media (max-width: 767px) {
     .formWithTitle__submit-btn {
         margin: 179px 0 16px 0;
@@ -94,4 +100,13 @@
 .formWithTitle__signin-link:hover {
     cursor: pointer;
     opacity: 0.6;
+}
+
+.formWithTitle__error-span {
+    /* margin-bottom: -100px; */
+    text-align: center;
+    /* margin-top: 90px; */
+    height: 20px;
+    font-size: 14px;
+    color: #ff5c5ccf;
 }

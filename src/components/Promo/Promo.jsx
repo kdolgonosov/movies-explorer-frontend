@@ -1,6 +1,6 @@
 import './Promo.css';
 
-const Promo = () => {
+const Promo = ({ scroll }) => {
     return (
         <section className='promo'>
             <div className='promo-wrapper'>
@@ -10,7 +10,7 @@ const Promo = () => {
                 <p className='promo__subtitle'>
                     Листайте ниже, чтобы узнать больше про этот проект и его создателя.
                 </p>
-                <button className='promo__button' type='button'>
+                <button className='promo__button' type='button' onClick={scroll}>
                     Узнать больше
                 </button>
             </div>

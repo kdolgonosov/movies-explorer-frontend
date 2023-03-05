@@ -1,7 +1,15 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import './FormWithTitle.css';
 
-const FormWithTitle = ({ title, children, btnTitle }) => {
+const FormWithTitle = ({
+    title,
+    children,
+    btnTitle,
+    onSubmit,
+    loginError,
+    registerError,
+    isFormValid,
+}) => {
     let location = useLocation();
     return (
         <section className='formWithTitle'>
@@ -9,7 +17,18 @@ const FormWithTitle = ({ title, children, btnTitle }) => {
             <h1 className='formWithTitle__title'>{title}</h1>
             <form className='formWithTitle__form'>
                 {children}
-                <button type='submit' className='formWithTitle__submit-btn'>
+                {loginError && (
+                    <span className='formWithTitle__error-span'>Неправильные email или пароль</span>
+                )}
+                {registerError && (
+                    <span className='formWithTitle__error-span'>Произошла ошибка!</span>
+                )}
+                <button
+                    type='submit'
+                    className='formWithTitle__submit-btn'
+                    onClick={onSubmit}
+                    disabled={!isFormValid}
+                >
                     {btnTitle}
                 </button>
             </form>

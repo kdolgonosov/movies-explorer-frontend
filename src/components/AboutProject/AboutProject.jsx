@@ -1,9 +1,9 @@
 import './AboutProject.css';
 import SectionHeader from '../SectionHeader/SectionHeader';
 
-const AboutProject = () => {
+const AboutProject = ({ myRef }) => {
     return (
-        <section className='aboutProject'>
+        <section className='aboutProject' ref={myRef}>
             <SectionHeader>О проекте</SectionHeader>
             <div className='aboutProject__points-grid'>
                 <p className='aboutProject__title'>Дипломный проект включал 5 этапов</p>

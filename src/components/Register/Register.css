@@ -26,5 +26,11 @@
     background-color: #3b3b3b;
 }
 .register__input:last-of-type {
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
+}
+.register__error-span {
+    margin-top: -12px;
+    height: 25px;
+    font-size: 10px;
+    color: #ff5c5ccf;
 }

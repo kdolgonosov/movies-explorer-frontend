@@ -39,6 +39,7 @@
 }
 .moviesCardList__loadMoreBtn {
     display: block;
+    content: 'X';
     margin: 100px auto 0;
     width: 320px;
     height: 36px;

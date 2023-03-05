@@ -5,7 +5,7 @@ const NotFound = () => {
         <div className='notFound'>
             <span className='notFound__statusCode'>404</span>
             <p className='notFound__statusMessage'>Страница не найдена</p>
-            <NavLink to='/' className='notFound__link'>
+            <NavLink to='/movies' className='notFound__link'>
                 Назад
             </NavLink>
         </div>
